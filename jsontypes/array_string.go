@@ -7,11 +7,11 @@ import (
 	jsoniter "github.com/json-iterator/go"
 )
 
-// StringsStringArray - масив масивов строк
-type StringsStringArray []string
+// ArrayStrings - массив строк
+type ArrayStrings []string
 
 // Scan - формирование массива
-func (s *StringsStringArray) Scan(value interface{}) error {
+func (s *ArrayStrings) Scan(value interface{}) error {
 
 	asBytes, ok := value.([]byte)
 	if !ok {
@@ -22,6 +22,6 @@ func (s *StringsStringArray) Scan(value interface{}) error {
 }
 
 // Value - формирование байтового массива
-func (s StringsStringArray) Value() (driver.Value, error) {
+func (s ArrayStrings) Value() (driver.Value, error) {
 	return jsoniter.Marshal(&s)
 }
