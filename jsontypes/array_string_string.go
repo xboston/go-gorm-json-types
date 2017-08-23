@@ -7,10 +7,10 @@ import (
 	jsoniter "github.com/json-iterator/go"
 )
 
-// ArrayArrayStrings - [][]string
-type ArrayArrayStrings [][]string
+// ArrayArrayString - [][]string
+type ArrayArrayString [][]string
 
-func (s *ArrayArrayStrings) Scan(value interface{}) error {
+func (s *ArrayArrayString) Scan(value interface{}) error {
 
 	asBytes, ok := value.([]byte)
 	if !ok {
@@ -20,6 +20,6 @@ func (s *ArrayArrayStrings) Scan(value interface{}) error {
 	return jsoniter.Unmarshal(asBytes, s)
 }
 
-func (s ArrayArrayStrings) Value() (driver.Value, error) {
+func (s ArrayArrayString) Value() (driver.Value, error) {
 	return jsoniter.Marshal(&s)
 }

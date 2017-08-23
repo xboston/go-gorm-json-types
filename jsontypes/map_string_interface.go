@@ -7,10 +7,10 @@ import (
 	jsoniter "github.com/json-iterator/go"
 )
 
-// MapStringsInterface - map[string]interface{}
-type MapStringsInterface map[string]interface{}
+// MapStringInterface - map[string]interface{}
+type MapStringInterface map[string]interface{}
 
-func (s *MapStringsInterface) Scan(value interface{}) error {
+func (s *MapStringInterface) Scan(value interface{}) error {
 
 	asBytes, ok := value.([]byte)
 
@@ -21,6 +21,6 @@ func (s *MapStringsInterface) Scan(value interface{}) error {
 	return jsoniter.Unmarshal(asBytes, s)
 }
 
-func (s MapStringsInterface) Value() (driver.Value, error) {
+func (s MapStringInterface) Value() (driver.Value, error) {
 	return jsoniter.Marshal(&s)
 }
